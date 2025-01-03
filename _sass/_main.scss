@@ -1,17 +1,48 @@
 @charset "utf-8";
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css2?family=Salesforce+Sans:wght@400;600;700&display=swap');
 
-$family-sans-serif: 'Montserrat', sans-serif;
-$primary: #00A1E0!default;
+// Override Bulma Variables to Match SLDS Theme
+$family-sans-serif: 'Salesforce Sans', sans-serif;
+$primary: #0070D2; // SLDS Blue
+$info: #2B8EEC;
+$success: #2E844A;
+$warning: #F69E00;
+$danger: #C23934;
+$link: #0070D2;
+
+$grey-dark: #3E3E3C;
+$grey-light: #DDDBDA;
+$grey-lighter: #F3F2F2;
+$grey-lightest: #FAFAFA;
+
+$body-background-color: $grey-lightest;
+$navbar-background-color: $grey-lighter;
+$navbar-item-color: $grey-dark;
+$navbar-item-hover-color: $primary;
+$navbar-item-hover-background-color: $grey-lighter;
 
 $tabs-link-active-color: $primary;
 $tabs-link-active-border-bottom-color: $primary;
 
 $modal-content-width: 800px;
+$modal-card-head-background-color: $grey-lighter;
+$modal-card-head-color: $grey-dark;
 
+$button-border-radius: 0.25rem;
+$button-padding-vertical: 0.75rem;
+$button-padding-horizontal: 1.5rem;
+
+$input-border-color: $grey-light;
+$input-hover-border-color: $primary;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow-size: 0 0 0 0.2rem rgba(0, 112, 210, 0.25);
+
+// Import Bulma and Required Mixins
 @import "../node_modules/bulma/sass";
 @import "../node_modules/bulma/sass/utilities/mixins";
-$hero-darken: $dark !default;
+
+// Additional SLDS Customizations
+$hero-darken: $grey-lighter !default;
 
 @import "layout";
 @import "syntax";
@@ -19,6 +50,125 @@ $hero-darken: $dark !default;
 @import "block-list";
 @import "promo-page";
 
+// Custom SLDS-style Button
+.button {
+  border-radius: 0.25rem;
+  box-shadow: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.button.is-primary {
+  background-color: $primary;
+  border-color: transparent;
+  color: white;
+
+  &:hover {
+    background-color: darken($primary, 10%);
+  }
+}
+
+.button.is-light {
+  background-color: $grey-lighter;
+  border: 1px solid $grey-light;
+  color: $grey-dark;
+
+  &:hover {
+    background-color: darken($grey-lighter, 5%);
+  }
+}
+
+// Inputs
+.input,
+.textarea {
+  border-radius: 0.25rem;
+  border: 1px solid $input-border-color;
+
+  &:hover {
+    border-color: $input-hover-border-color;
+  }
+
+  &:focus {
+    border-color: $input-focus-border-color;
+    box-shadow: $input-focus-box-shadow-size;
+  }
+}
+
+// Navbar SLDS Style
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .navbar-item {
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+
+    &:hover {
+      color: $navbar-item-hover-color;
+      background-color: $navbar-item-hover-background-color;
+    }
+  }
+}
+
+// Cards and Boxes - Clean, Minimal Style
+.box {
+  border-radius: 0.5rem;
+  border: 1px solid $grey-light;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 1.5rem;
+}
+
+.card {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  .card-header {
+    background-color: $grey-lighter;
+    border-bottom: 1px solid $grey-light;
+  }
+}
+
+// Tabs
+.tabs {
+  .is-active a {
+    border-bottom-color: $tabs-link-active-border-bottom-color;
+    color: $tabs-link-active-color;
+  }
+}
+
+// Hero Section
+.hero {
+  background-color: $grey-lightest;
+
+  .hero-body {
+    padding: 3rem 1.5rem;
+  }
+}
+
+// SLDS Accent Text
+.has-text-primary {
+  color: $primary !important;
+}
+
+.has-text-info {
+  color: $info !important;
+}
+
+.has-text-danger {
+  color: $danger !important;
+}
+
+.has-text-warning {
+  color: $warning !important;
+}
+
+// Sponsor Link Style
 .gh-sponsor {
   color: #ea4aaa;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
