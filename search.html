@@ -1,0 +1,60 @@
+---
+layout: default
+title: Search
+permalink: /search/
+---
+
+<section class="section">
+    <div class="container">
+        <h1 class="title">Search</h1>
+        <div class="field">
+            <label class="label">Search</label>
+            <div class="control">
+                <input id="searchInput" class="input" type="text" placeholder="Search...">
+            </div>
+        </div>
+
+        <div id="search-results" class="content mt-5">
+            {% assign docs = site.documents | where_exp: "doc", "doc.title" %}
+            {% for doc in docs %}
+            <div class="search-item box" data-title="{{ doc.title | downcase }}"
+                data-description="{{ doc.description | downcase }}">
+                <article class="media">
+                    <div class="media-left">
+                        <figure class="image is-64x64">
+                            <img src="{{ doc.image | relative_url }}" alt="{{ doc.title }}">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <div class="content">
+                            <h2><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a></h2>
+                            <p>{{ doc.description | strip_html | truncatewords: 30 }}</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const input = document.getElementById('searchInput');
+        const items = document.querySelectorAll('.search-item');
+
+        input.addEventListener('keyup', () => {
+            const searchTerm = input.value.toLowerCase();
+            items.forEach(item => {
+                const title = item.dataset.title;
+                const description = item.dataset.description;
+
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
