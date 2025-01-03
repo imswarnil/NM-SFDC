@@ -49,19 +49,76 @@ $hero-darken: $grey-lighter !default;
 @import "block-list";
 @import "promo-page";
 
-// SLDS-Style Buttons
+// Base Styling
+html,
+body {
+  font-family: $family-sans-serif;
+  background-color: $body-background-color;
+}
+
+// Additional Component Styling
+.field {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  font-weight: 600;
+  color: $grey-dark;
+}
+
+.control {
+  margin-bottom: 1rem;
+}
+
+.box {
+  border: 1px solid $grey-light;
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.card {
+  border: 1px solid $grey-light;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: $grey-lighter;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid $grey-light;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+// SLDS Navigation Bar
+.navbar {
+  background-color: $navbar-background-color;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-item {
+  font-weight: 600;
+
+  &:hover {
+    background-color: $navbar-item-hover-background-color;
+    color: $navbar-item-hover-color;
+  }
+}
+
+// Buttons
 .button {
-  border-radius: 0.25rem;
-  box-shadow: none;
+  border-radius: $button-border-radius;
   font-weight: 600;
   text-transform: uppercase;
-  transition: all 0.2s ease;
+  padding: $button-padding-vertical $button-padding-horizontal;
+  transition: background-color 0.3s;
 }
 
 .button.is-primary {
   background-color: $primary;
-  border-color: transparent;
-  color: white;
+  border: none;
 
   &:hover {
     background-color: darken($primary, 10%);
@@ -71,18 +128,17 @@ $hero-darken: $grey-lighter !default;
 .button.is-light {
   background-color: $grey-lighter;
   border: 1px solid $grey-light;
-  color: $grey-dark;
 
   &:hover {
     background-color: darken($grey-lighter, 5%);
   }
 }
 
-// Inputs and Textareas
+// Forms
 .input,
 .textarea {
-  border-radius: 0.25rem;
   border: 1px solid $input-border-color;
+  border-radius: 0.25rem;
 
   &:hover {
     border-color: $input-hover-border-color;
@@ -94,115 +150,33 @@ $hero-darken: $grey-lighter !default;
   }
 }
 
-// Navbar with SLDS Styles
-.navbar {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  .navbar-item {
-    font-weight: 600;
-    padding: 0.75rem 1.5rem;
-
-    &:hover {
-      color: $navbar-item-hover-color;
-      background-color: $navbar-item-hover-background-color;
-    }
-  }
-}
-
-// Cards and Boxes
-.box,
-.card {
-  border-radius: 0.5rem;
-  border: 1px solid $grey-light;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  background-color: white;
-  padding: 1.5rem;
-}
-
-.card-header {
-  background-color: $grey-lighter;
-  border-bottom: 1px solid $grey-light;
-  font-weight: 700;
-  color: $grey-dark;
-}
-
-// Tabs
-.tabs {
-  .is-active a {
-    border-bottom-color: $tabs-link-active-border-bottom-color;
-    color: $tabs-link-active-color;
-  }
-}
-
-// Hero Section
-.hero {
-  background-color: $grey-lightest;
-
-  .hero-body {
-    padding: 3rem 1.5rem;
-  }
-}
-
-// Headings and Titles
-.title,
-.subtitle {
-  font-weight: 700;
-  color: $grey-dark;
-}
-
-// Tables
-.table {
-  border-collapse: collapse;
-  width: 100%;
-
-  th,
-  td {
-    border: 1px solid $grey-light;
-    padding: 1rem;
-    text-align: left;
-  }
-}
-
-// Alerts and Notifications
-.notification {
+// Progress Bars
+.progress {
+  background-color: $grey-light;
   border-radius: 0.25rem;
-  padding: 1.25rem 1.5rem;
-  border: 1px solid $grey-light;
-
-  &.is-primary {
-    background-color: lighten($primary, 45%);
-    color: $primary;
-  }
-
-  &.is-danger {
-    background-color: lighten($danger, 45%);
-    color: $danger;
-  }
 }
 
-// Accent Text
-.has-text-primary {
-  color: $primary !important;
+.progress-bar {
+  background-color: $primary;
 }
 
-.has-text-info {
-  color: $info !important;
+// Badges
+.badge {
+  background-color: $primary;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-weight: 600;
 }
 
-.has-text-danger {
-  color: $danger !important;
+.badge.is-danger {
+  background-color: $danger;
 }
 
-.has-text-warning {
-  color: $warning !important;
+.badge.is-warning {
+  background-color: $warning;
 }
 
-// Sponsor Section
-.gh-sponsor {
-  color: #ea4aaa;
-  font-weight: bold;
-
-  &:hover {
-    text-decoration: underline;
-  }
+.badge.is-success {
+  background-color: $success;
 }
