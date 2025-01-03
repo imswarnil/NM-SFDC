@@ -1,7 +1,8 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Salesforce+Sans:wght@400;600;700&display=swap');
 
-// Override Bulma Variables to Match SLDS Theme
+// Salesforce Lightning Design System (SLDS) Theme for Bulma
+// Typography
 $family-sans-serif: 'Salesforce Sans', sans-serif;
 $primary: #0070D2; // SLDS Blue
 $info: #2B8EEC;
@@ -37,11 +38,9 @@ $input-hover-border-color: $primary;
 $input-focus-border-color: $primary;
 $input-focus-box-shadow-size: 0 0 0 0.2rem rgba(0, 112, 210, 0.25);
 
-// Import Bulma and Required Mixins
 @import "../node_modules/bulma/sass";
 @import "../node_modules/bulma/sass/utilities/mixins";
 
-// Additional SLDS Customizations
 $hero-darken: $grey-lighter !default;
 
 @import "layout";
@@ -50,7 +49,7 @@ $hero-darken: $grey-lighter !default;
 @import "block-list";
 @import "promo-page";
 
-// Custom SLDS-style Button
+// SLDS-Style Buttons
 .button {
   border-radius: 0.25rem;
   box-shadow: none;
@@ -79,7 +78,7 @@ $hero-darken: $grey-lighter !default;
   }
 }
 
-// Inputs
+// Inputs and Textareas
 .input,
 .textarea {
   border-radius: 0.25rem;
@@ -95,7 +94,7 @@ $hero-darken: $grey-lighter !default;
   }
 }
 
-// Navbar SLDS Style
+// Navbar with SLDS Styles
 .navbar {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
@@ -110,8 +109,9 @@ $hero-darken: $grey-lighter !default;
   }
 }
 
-// Cards and Boxes - Clean, Minimal Style
-.box {
+// Cards and Boxes
+.box,
+.card {
   border-radius: 0.5rem;
   border: 1px solid $grey-light;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -119,14 +119,11 @@ $hero-darken: $grey-lighter !default;
   padding: 1.5rem;
 }
 
-.card {
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
-  .card-header {
-    background-color: $grey-lighter;
-    border-bottom: 1px solid $grey-light;
-  }
+.card-header {
+  background-color: $grey-lighter;
+  border-bottom: 1px solid $grey-light;
+  font-weight: 700;
+  color: $grey-dark;
 }
 
 // Tabs
@@ -146,7 +143,44 @@ $hero-darken: $grey-lighter !default;
   }
 }
 
-// SLDS Accent Text
+// Headings and Titles
+.title,
+.subtitle {
+  font-weight: 700;
+  color: $grey-dark;
+}
+
+// Tables
+.table {
+  border-collapse: collapse;
+  width: 100%;
+
+  th,
+  td {
+    border: 1px solid $grey-light;
+    padding: 1rem;
+    text-align: left;
+  }
+}
+
+// Alerts and Notifications
+.notification {
+  border-radius: 0.25rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid $grey-light;
+
+  &.is-primary {
+    background-color: lighten($primary, 45%);
+    color: $primary;
+  }
+
+  &.is-danger {
+    background-color: lighten($danger, 45%);
+    color: $danger;
+  }
+}
+
+// Accent Text
 .has-text-primary {
   color: $primary !important;
 }
@@ -163,7 +197,7 @@ $hero-darken: $grey-lighter !default;
   color: $warning !important;
 }
 
-// Sponsor Link Style
+// Sponsor Section
 .gh-sponsor {
   color: #ea4aaa;
   font-weight: bold;
